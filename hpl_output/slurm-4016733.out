@@ -1,0 +1,10 @@
+Running linpack on hs04
+Thu May  9 18:02:13 AEST 2019
+HPL ERROR from process # 0, on line 419 of function HPL_pdinfo:
+>>> Need at least 20 processes for these tests <<<
+
+HPL ERROR from process # 0, on line 621 of function HPL_pdinfo:
+>>> Illegal input in file HPL.dat. Exiting ... <<<
+
+srun: error: hs04: tasks 0-15: Exited with exit code 1
+Finished

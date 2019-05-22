@@ -1,0 +1,81 @@
+Running linpack on hs04
+Thu May  9 18:05:47 AEST 2019
+================================================================================
+HPLinpack 2.3  --  High-Performance Linpack benchmark  --   December 2, 2018
+Written by A. Petitet and R. Clint Whaley,  Innovative Computing Laboratory, UTK
+Modified by Piotr Luszczek, Innovative Computing Laboratory, UTK
+Modified by Julien Langou, University of Colorado Denver
+================================================================================
+
+An explanation of the input/output parameters follows:
+T/V    : Wall time / encoded variant.
+N      : The order of the coefficient matrix A.
+NB     : The partitioning blocking factor.
+P      : The number of process rows.
+Q      : The number of process columns.
+Time   : Time in seconds to solve the linear system.
+Gflops : Rate of execution for solving the linear system.
+
+The following parameter values will be used:
+
+N      :   24000    48000    72000   110000   120000 
+NB     :     200 
+PMAP   : Row-major process mapping
+P      :       4 
+Q      :       4 
+PFACT  :   Crout 
+NBMIN  :       4 
+NDIV   :       2 
+RFACT  :   Right 
+BCAST  :  1ringM 
+DEPTH  :       0 
+SWAP   : Mix (threshold = 200)
+L1     : transposed form
+U      : transposed form
+EQUIL  : yes
+ALIGN  : 8 double precision words
+
+--------------------------------------------------------------------------------
+
+- The matrix A is randomly generated for each test.
+- The following scaled residual check will be computed:
+      ||Ax-b||_oo / ( eps * ( || x ||_oo * || A ||_oo + || b ||_oo ) * N )
+- The relative machine precision (eps) is taken to be               1.110223e-16
+- Computational tests pass if scaled residuals are less than                16.0
+
+================================================================================
+T/V                N    NB     P     Q               Time                 Gflops
+--------------------------------------------------------------------------------
+WR01R2C4       24000   200     4     4              17.83             5.1687e+02
+HPL_pdgesv() start time Thu May  9 18:05:52 2019
+
+HPL_pdgesv() end time   Thu May  9 18:06:09 2019
+
+--------------------------------------------------------------------------------
+||Ax-b||_oo/(eps*(||A||_oo*||x||_oo+||b||_oo)*N)=   3.86474621e-03 ...... PASSED
+================================================================================
+T/V                N    NB     P     Q               Time                 Gflops
+--------------------------------------------------------------------------------
+WR01R2C4       48000   200     4     4             124.75             5.9102e+02
+HPL_pdgesv() start time Thu May  9 18:06:26 2019
+
+HPL_pdgesv() end time   Thu May  9 18:08:31 2019
+
+--------------------------------------------------------------------------------
+||Ax-b||_oo/(eps*(||A||_oo*||x||_oo+||b||_oo)*N)=   3.75921353e-03 ...... PASSED
+================================================================================
+T/V                N    NB     P     Q               Time                 Gflops
+--------------------------------------------------------------------------------
+WR01R2C4       72000   200     4     4             408.28             6.0948e+02
+HPL_pdgesv() start time Thu May  9 18:09:15 2019
+
+HPL_pdgesv() end time   Thu May  9 18:16:03 2019
+
+--------------------------------------------------------------------------------
+||Ax-b||_oo/(eps*(||A||_oo*||x||_oo+||b||_oo)*N)=   3.26399931e-03 ...... PASSED
+slurmstepd: error: Detected 1 oom-kill event(s) in step 4016737.0 cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.
+srun: error: hs04: task 8: Out Of Memory
+srun: Job step aborted: Waiting up to 12 seconds for job step to finish.
+slurmstepd: error: *** JOB 4016737 ON hs04 CANCELLED AT 2019-05-10T09:59:34 ***
+slurmstepd: error: *** STEP 4016737.0 ON hs04 CANCELLED AT 2019-05-10T09:59:34 ***
+slurmstepd: error: Detected 5 oom-kill event(s) in step 4016737.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.
